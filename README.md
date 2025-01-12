@@ -1,57 +1,104 @@
-# YouTube Music Downloader for MP3 Players
+# MP3 Player Genie 🎵
 
-A family-friendly application designed to help kids download music for their MP3 players, encouraging a more focused and offline music experience away from streaming services and social media distractions.
+A Windows app for downloading and organizing music. Built with Python and Qt. Currently in early development!
 
-## Features
+⚠️ **Note:** This is a work in progress and pretty buggy. Use at your own risk!
 
-- Simple, kid-friendly interface
-- Downloads high-quality MP3s from YouTube
-- Automatically finds and applies correct song metadata (artist, title, album, etc.)
-- Organizes music by artist folders
-- Optional automatic copying to USB/MP3 players
-- Safe USB ejection when closing
-- Multiple downloads can be queued
-- Shows download progress and status
+## What it does (or tries to do 😅)
 
-## How to Use
+- Download music with a modern-looking UI
+- Search for songs and preview before downloading
+- Auto-organize your music library
+- Sync to USB drives (when it works)
+- Show pretty progress bars and stuff
+- Default to 192k audio quality
 
-1. Plug in your MP3 player (if you want automatic copying)
-2. Double-click the "Download Music" shortcut on your desktop
-3. Enter your name when prompted (this keeps your music separate from siblings)
-4. Type a song name and artist in the search box (e.g., "queen bohemian rhapsody")
-5. Press Enter or click Download
-6. Wait for the download to complete
-7. Your music will be saved in both:
-   - Your personal music folder on the computer
-   - Your MP3 player (if connected and enabled)
+## You'll need
 
-## Tips for Kids
+- Windows 10+
+- Python 3.11+
 
-- Type both the artist and song name for best results
-- Watch the status to see how many songs are queued/downloading
-- Make sure your MP3 player is plugged in before starting if you want automatic copying
-- Always use the "Eject" option when closing the program to safely remove your MP3 player
-- Your downloaded songs are organized in folders by artist name
+## Want to try it?
 
-## For Parents
+### Quick way (when we have releases)
+Coming soon! We'll have proper releases once it's more stable.
 
-This application was created to:
-- Provide a safe, controlled way for kids to build their music collections
-- Encourage ownership of personal music libraries
-- Reduce dependency on streaming services and social media
-- Make it easy to use "old-school" MP3 players
-- Keep each child's music collection separate and organized
+### Hacker way (if you're brave)
 
-## Requirements
+1. Get the basics:
+```powershell
+winget install Python.Python.3.11
+winget install FFmpeg
+```
 
-- Windows 10 or newer
-- Internet connection
-- MP3 player or USB drive (optional)
+2. Clone and set up:
+```powershell
+git clone https://github.com/lmacka/music-downloader.git
+cd mp3-player-genie
+python -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+```
 
-## Setup
+3. Build it:
+```powershell
+python setup_windows.py
+```
 
-1. Extract all files to a folder
-2. Double-click the "Download Music" shortcut
-3. Each child should use their own name when prompted
+## How to use it
 
-The program will create separate music folders for each child and automatically organize downloaded songs by artist. 
+1. Launch it (if it launches 🤞)
+2. Type a song name in the search box
+3. Hit search and pick your song
+4. Watch the progress bars move!
+
+### Cool features (when they work)
+
+- **Search:** Pretty good at finding the right song
+- **Downloads:** Shows progress and can handle a few at once
+- **USB Support:** Detects USB drives and can copy files over
+- **Settings:** Lots of knobs to tweak if you're into that
+
+## Project Structure
+```
+mp3-player-genie/
+├── music_downloader/     # Where the magic happens
+│   ├── core/            # The brain stuff
+│   ├── gui/             # The pretty stuff
+│   └── __main__.py      # The "on" button
+├── tests/               # Some tests (need more!)
+└── various setup files  # For making it installable
+```
+
+## Development
+
+This is a hobby project using:
+- Python 3.11+ (because new Python is best Python)
+- PySide6 (Qt for the UI)
+- Async/await (for that sweet non-blocking IO)
+- Type hints (because we like to know what's what)
+
+### Building from source
+
+1. Get the dependencies:
+```powershell
+pip install -r requirements.txt
+```
+
+2. Cross your fingers and run:
+```powershell
+python setup_windows.py
+```
+
+This should:
+- Make an exe with PyInstaller
+- Put it in Program Files
+- Create some shortcuts
+- Add it to PATH
+
+### Uninstalling
+
+If it all goes wrong:
+- Use Windows "Add or Remove Programs"
+- Or run `uninstall_windows.py`
+- Or just delete the folder
